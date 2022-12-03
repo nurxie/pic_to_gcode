@@ -81,7 +81,7 @@ class Graph:
 		# The next chosen starting node is the closest to the current position
 
 		def pathGcode(i, insidePath):
-			f.write(f"G{1 if insidePath else 0} X{(self[i].y)/5} Y{(self[i].x)/5}\n") #!!!!!!!!!!!!!!!!!!!!!!!!!!
+			f.write(f"G{1 if insidePath else 0} X{(self[i].y)/5} Y{(self[i].x)/5}*\n") #!!!!!!!!!!!!!!!!!!!!!!!!!!
 			for connTo, alreadyUsed in self[i].connections.items():
 				if not alreadyUsed:
 					self[i].connections[connTo] = True
