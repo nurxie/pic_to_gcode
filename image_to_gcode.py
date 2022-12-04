@@ -79,7 +79,7 @@ class Graph:
 	def saveAsGcodeFile(self, f):
 		### First follow all paths that have a start/end node (i.e. are not cycles)
 		# The next chosen starting node is the closest to the current position
-
+		f.write(f"/")
 		def pathGcode(i, insidePath):
 			f.write(f"G{1 if insidePath else 0} X{(self[i].y)/5} Y{(self[i].x)/5}*\n") #!!!!!!!!!!!!!!!!!!!!!!!!!!
 			for connTo, alreadyUsed in self[i].connections.items():
@@ -103,7 +103,7 @@ class Graph:
 
 				if len(self[node].connections) == 0:
 					assert pathEndNode == node
-					f.write(f"G1 X{(self[node].y)/5} Y{(self[node].x)/5}\n") # f.write(f"G1 X{self[node].y} Y{-self[node].x}\n")
+					f.write(f"G1 X{(self[node].y)/5} Y{(self[node].x)/5}*\n") # f.write(f"G1 X{self[node].y} Y{-self[node].x}\n")
 				else:
 					possibleStartingNodes.remove(pathEndNode)
 
@@ -134,7 +134,7 @@ class Graph:
 				cycleNodes.add(i)
 
 		def cyclePathGcode(i, insidePath):
-			f.write(f"G{1 if insidePath else 0} X{(self[i].y)/5} Y{(self[i].x)/5}\n")
+			f.write(f"G{1 if insidePath else 0} X{(self[i].y)/5} Y{(self[i].x)/5}*\n")
 
 			foundConnections = 0
 			for connTo, alreadyUsed in self[i].connections.items():
