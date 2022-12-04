@@ -9,7 +9,7 @@
 int main(){
     system("python3 image_to_gcode.py --input image.png --output graph.gcode --threshold 80");
     system("cp /var/www/firstimeke/maps/pic_to_gcode/graph.gcode /var/www/firstimeke/maps/");
-    system("rm image.png & rm graph.gcode")
+    system("rm image.png & rm graph.gcode");
     sleep(10);
     system("cd.. & rm graph.gcode");
     return 0;
