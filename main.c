@@ -7,7 +7,7 @@
 //34.203.60.141
 
 int main(){
-    system("python3 image_to_gcode.py --input image.png --output graph.gcode --threshold 80");
+    system("python3 image_to_gcode.py --input image.png --output graph.gcode --threshold 120");
     system("cp /var/www/firstimeke/maps/pic_to_gcode/graph.gcode /var/www/firstimeke/maps/");
     //system("rm image.png & rm graph.gcode");
     sleep(8);
